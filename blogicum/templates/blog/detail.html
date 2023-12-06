@@ -8,20 +8,20 @@
 <article>
     <ul>
         <li>
-            Место: {{ object.location }}
+            Место: {{ post.location }}
         </li>
         <li>
-            Дата: {{ object.date }}
+            Дата: {{ post.date }}
         </li>
         <li>
             Категория:
-            <a href="{% url 'blog:category_posts' object.category %}">
-                {{ object.category }}
+            <a href="{% url 'blog:category_posts' post.category %}">
+                {{ post.category }}
             </a>
         </li>
     </ul>
     <p>
-        {{ object.text|linebreaksbr }}
+        {{ post.text|linebreaksbr }}
     </p>
 </article>
 {% endblock %}

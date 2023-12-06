@@ -48,7 +48,7 @@ posts = [
 
 def index(request):
     context = {
-        'object_list': posts,
+        'object_list': list(reversed(posts)),
     }
     return render(
         request=request,
@@ -63,7 +63,7 @@ def post_detail(request, id):
         id=id
     )
     context = {
-        'object': post,
+        'post': post,
     }
     return render(
         request=request,
