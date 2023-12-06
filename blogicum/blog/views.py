@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-# напивано в тз разместить здесь, 
-# я бы в другой файл вынес, чтобы не засорять views.py
+from blog.utils import get_object_from_posts_or_404
+
 posts = [
     {
         'id': 0,
@@ -45,26 +45,39 @@ posts = [
     },
 ]
 
+
 def index(request):
-    context = {}
+    context = {
+        'object_list': posts,
+    }
     return render(
-        request=request, 
-        template_name='blog/index.html', 
+        request=request,
+        template_name='blog/index.html',
         context=context
-        )
+    )
+
 
 def post_detail(request, id):
-    context = {}
+    post = get_object_from_posts_or_404(
+        sequence=posts,
+        id=id
+    )
+    context = {
+        'object': post,
+    }
     return render(
-        request=request, 
-        template_name='blog/detail.html', 
+        request=request,
+        template_name='blog/detail.html',
         context=context
-        )
+    )
+
 
 def category_posts(request, category_slug):
-    context = {}
+    context = {
+        'object': category_slug,
+    }
     return render(
-        request=request, 
-        template_name='blog/category.html', 
+        request=request,
+        template_name='blog/category.html',
         context=context
-        )
+    )

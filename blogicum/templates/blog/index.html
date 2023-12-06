@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Лента записей
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Лента записей</h1>
+{% for object in object_list %}
+<hr>
+<article>
+    <ul>
+        <li>
+            Место: {{ object.location }}
+        </li>
+        <li>
+            Дата: {{ object.date }}
+        </li>
+        <li>
+            Категория: <a href="{% url 'blog:category_posts' object.category %}">
+            {{ object.category }}
+        </a>
+        </li>
+    </ul>
+    <p>
+        {{ object.text|truncatewords:10 }}
+    </p>
+    <a href="{% url 'blog:post_detail' object.id %}">
+        Читать полный текст
+    </a>
+</article>
+{% endfor %}
+
+{% endblock %}
+
+
