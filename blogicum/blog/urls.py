@@ -6,6 +6,7 @@ from blog.views import (
     category_posts
 )
 
+
 app_name = 'blog'
 
 urlpatterns = [

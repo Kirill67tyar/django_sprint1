@@ -2,19 +2,11 @@ from typing import Union
 from django.http import Http404
 
 
-def get_object_from_posts_or_404(
-        sequence: list[dict[str, Union[str, int]]],
-        **params
+def get_object_by_id_or_404(
+        posts: dict[int, dict[str, Union[str, int]]],
+        pk: int
 ) -> dict:
-    """Функция найдёт объект в последовательности или вызовет 404."""
-    for item in sequence:
-        # узнаём что все имена параметров которые мы ищем есть в item
-        if not set(params).difference(item):
-            for k in params:
-                # если значение одного параметра не совпадёт
-                # останавливаем цикл
-                if item[k] != params[k]:
-                    break
-            else:
-                return item
-    raise Http404('Page not found.')
+    try:
+        return posts[pk]
+    except KeyError:
+        raise Http404('Page not found.')

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from blog.utils import get_object_from_posts_or_404
+from blog.utils import get_object_by_id_or_404
+
 
 posts = [
     {
@@ -48,36 +49,34 @@ posts = [
 
 def index(request):
     context = {
-        'object_list': list(reversed(posts)),
+        'posts': posts,
     }
-    return render(
-        request=request,
-        template_name='blog/index.html',
-        context=context
-    )
+    return render(request,
+                  'blog/index.html',
+                  context
+                  )
 
 
 def post_detail(request, id):
-    post = get_object_from_posts_or_404(
-        sequence=posts,
-        id=id
+    posts_by_id = {p['id']: p for p in posts}
+    post = get_object_by_id_or_404(
+        posts=posts_by_id,
+        pk=id
     )
     context = {
         'post': post,
     }
-    return render(
-        request=request,
-        template_name='blog/detail.html',
-        context=context
-    )
+    return render(request,
+                  'blog/detail.html',
+                  context
+                  )
 
 
 def category_posts(request, category_slug):
     context = {
-        'object': category_slug,
+        'category_slug': category_slug,
     }
-    return render(
-        request=request,
-        template_name='blog/category.html',
-        context=context
-    )
+    return render(request,
+                  'blog/category.html',
+                  context
+                  )
