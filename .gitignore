@@ -156,3 +156,21 @@ html/img/img/
 # Draft
 draft.py
 draft.txt
+
+# first templates
+html/
+
+# from blog
+blogicum/blog/migrations/
+blogicum/blog/admin.py
+blogicum/blog/models.py
+blogicum/blog/tests.py
+
+# from pages
+blogicum/pages/migrations/
+blogicum/pages/admin.py
+blogicum/pages/models.py
+blogicum/pages/tests.py
+
+# from blogicum
+blogicum/blogicum/asgi.py
