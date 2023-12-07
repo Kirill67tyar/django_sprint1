@@ -161,14 +161,11 @@ draft.txt
 html/
 
 # from blog
-blogicum/blog/migrations/
 blogicum/blog/admin.py
 blogicum/blog/models.py
 blogicum/blog/tests.py
 
 # from pages
-blogicum/pages/migrations/
 blogicum/pages/admin.py
 blogicum/pages/models.py
 blogicum/pages/tests.py
-
