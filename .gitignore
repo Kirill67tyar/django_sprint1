@@ -172,5 +172,3 @@ blogicum/pages/admin.py
 blogicum/pages/models.py
 blogicum/pages/tests.py
 
-# from blogicum
-blogicum/blogicum/asgi.py
