@@ -8,6 +8,6 @@
   <h1>Лента записей</h1>
   {% for post in posts|dictsortreversed:"id" %}
     <hr>
-    {% include 'blog/include/article.html' with short=1 %}
+    {% include 'blog/include/article.html' %}
   {% endfor %}
 {% endblock %}

@@ -13,7 +13,7 @@
       </a>
     </li>
   </ul>
-  {% if short %}
+  {% if request.resolver_match.view_name == 'blog:index' %}
     <p>
       {{ post.text|truncatewords:10 }}
     </p>
