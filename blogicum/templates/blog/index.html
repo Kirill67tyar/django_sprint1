@@ -6,7 +6,8 @@
 
 {% block content %}
   <h1>Лента записей</h1>
-  {% for p in posts|dictsortreversed:"id" %}
-    {% include 'blog/include/article.html' with post=p %}
+  {% for post in posts|dictsortreversed:"id" %}
+    <hr>
+    {% include 'blog/include/article.html' with short=1 %}
   {% endfor %}
 {% endblock %}

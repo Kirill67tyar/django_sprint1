@@ -1,4 +1,3 @@
-<hr>
 <article>
   <ul>
     <li>
@@ -14,10 +13,16 @@
       </a>
     </li>
   </ul>
-  <p>
-    {{ post.text|truncatewords:10 }}
-  </p>
-  <a href="{% url 'blog:post_detail' post.id %}">
-    Читать полный текст
-  </a>
+  {% if short %}
+    <p>
+      {{ post.text|truncatewords:10 }}
+    </p>
+    <a href="{% url 'blog:post_detail' post.id %}">
+      Читать полный текст
+    </a>
+  {% else %}
+    <p>
+      {{ post.text|linebreaksbr }}
+    </p>
+  {% endif %}
 </article>

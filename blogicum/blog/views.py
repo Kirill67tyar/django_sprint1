@@ -1,6 +1,5 @@
 from django.shortcuts import render
-
-from blog.utils import get_object_by_id_or_404
+from django.http import Http404
 
 
 posts = [
@@ -58,13 +57,11 @@ def index(request):
 
 
 def post_detail(request, id):
-    posts_by_id = {p['id']: p for p in posts}
-    post = get_object_by_id_or_404(
-        posts=posts_by_id,
-        pk=id
-    )
+    posts_by_id = {post['id']: post for post in posts}
+    if id not in posts_by_id:
+        raise Http404('Page not found.')
     context = {
-        'post': post,
+        'post': posts_by_id[id],
     }
     return render(request,
                   'blog/detail.html',
